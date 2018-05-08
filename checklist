@@ -1,0 +1,9 @@
+Android.mk
+BoardConfig.mk
+device.mk
+extract-files
+lineage[or others].mk
+proprietary-files
+README.md
+setup-makefiles
+system
