@@ -1,0 +1,11 @@
+framework-res vendor/cm/overlay/common/frameworks/base/core/res/res
+SettingsProvider vendor/cm/overlay/common/frameworks/base/packages/SettingsProvider/res
+SystemUI vendor/cm/overlay/common/frameworks/base/packages/Keyguard/res vendor/cm/overlay/common/frameworks/base/packages/SystemUI/res
+Mms vendor/cm/overlay/common/packages/apps/Mms/res
+Settings vendor/cm/overlay/common/packages/apps/Settings/res
+Trebuchet vendor/cm/overlay/common/packages/apps/Trebuchet/res
+LatinIME vendor/cm/overlay/common/packages/inputmethods/LatinIME/java/res vendor/cm/overlay/dictionaries/packages/inputmethods/LatinIME/java/res
+TelephonyProvider vendor/cm/overlay/common/packages/providers/TelephonyProvider/res
+Telecom vendor/cm/overlay/common/packages/services/Telecomm/res
+TeleService vendor/cm/overlay/common/packages/services/Telephony/res
+CMSettingsProvider vendor/cm/overlay/common/vendor/cmsdk/packages/CMSettingsProvider/res
