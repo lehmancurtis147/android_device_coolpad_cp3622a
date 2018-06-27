@@ -29,7 +29,6 @@ TARGET_USERIMAGES_SPARSE_EXT_DISABLED := false
 
 BOARD_CUSTOM_BOOTIMG := true
 BOARD_CUSTOM_BOOTIMG_MK := device/coolpad/cp3622a/bootimg.mk
-BOARD_CUSTOM_MKBOOTIMG := mtkbootimg
 TARGET_RECOVERY_FSTAB := device/coolpad/cp3622a/recovery/recovery.fstab
 
 RECOVERY_VARIANT := twrp

@@ -17,20 +17,21 @@
 
 set -e
 
-export INITIAL_COPYRIGHT_YEAR=2015
+export INITIAL_COPYRIGHT_YEAR=2016
 
 # Required!
-export DEVICE=scale
-export DEVICE_COMMON=msm8909-common
-export VENDOR=Coolpad
+export DEVICE=device/coolpad/cp3622a/
+export DEVICE_COMMON=device/coolpad/msm8909-common
+export VENDOR=vendor/coolpad/
+
 
 # Load extractutils and do some sanity checks
 MY_DIR="${BASH_SOURCE%/*}"
 if [[ ! -d "$MY_DIR" ]]; then MY_DIR="$PWD"; fi
 
-CM_ROOT="$MY_DIR"/../../..
+lineage_ROOT="$MY_DIR"/../../..
 
-HELPER="$CM_ROOT"/vendor/cm/build/tools/extract_utils.sh
+HELPER="$lineage_ROOT"/vendor/lineage/build/tools/extract_utils.sh
 if [ ! -f "$HELPER" ]; then
     echo "Unable to find helper script at $HELPER"
     exit 1
@@ -38,10 +39,10 @@ fi
 . "$HELPER"
 
 # Initialize the helper for common
-setup_vendor "$DEVICE_COMMON" "$VENDOR" "$CM_ROOT" "true"
+setup_vendor "$DEVICE_COMMON" "$VENDOR" "$lineage_ROOT" "true"
 
 # Copyright headers and guards
-write_headers "scale"
+write_headers "cp3622a"
 
 # The standard common blobs
 write_makefiles "$MY_DIR"/proprietary-files.txt
@@ -65,7 +66,7 @@ write_footers
 
 if [ -s "$MY_DIR"/../$DEVICE/proprietary-files.txt ]; then
     # Reinitialize the helper for device
-    setup_vendor "$DEVICE" "$VENDOR" "$CM_ROOT"
+    setup_vendor "$DEVICE" "$VENDOR" "$lineage_ROOT"
 
     # Copyright headers and guards
     write_headers

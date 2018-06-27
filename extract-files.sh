@@ -18,8 +18,8 @@
 set -e
 
 # Required!
-export DEVICE=cp3622a
-export DEVICE_COMMON=msm8909-common
-export VENDOR=Coolpad
+export DEVICE=device/coolpad/cp3622a
+export DEVICE_COMMON=device/coolpad/msm8909-common
+export VENDOR=vendor/coolpad
 
 ./../../$VENDOR/$DEVICE_COMMON/extract-files.sh $@
