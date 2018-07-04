@@ -20,9 +20,9 @@ set -e
 export INITIAL_COPYRIGHT_YEAR=2016
 
 # Required!
-export DEVICE=device/coolpad/cp3622a/
-export DEVICE_COMMON=device/coolpad/msm8909-common
-export VENDOR=vendor/coolpad/
+export DEVICE=cp3622a/
+export DEVICE_COMMON=msm8909-common/
+export VENDOR=coolpad/
 
 
 # Load extractutils and do some sanity checks
