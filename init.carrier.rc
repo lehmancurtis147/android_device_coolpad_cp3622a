@@ -1,4 +1,4 @@
-# Copyright (c) 2016, The Linux Foundation. All rights reserved.
+# Copyright (c) 2014, The Linux Foundation. All rights reserved.
 #
 # Redistribution and use in source and binary forms, with or without
 # modification, are permitted provided that the following conditions are
@@ -24,10 +24,29 @@
 # WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE
 # OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN
 # IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
+#
+#
 
-# For Regionalization service
-allow system_server regionalization_service:service_manager { add find };
-allow system_server regionalization_file:file rw_file_perms;
-allow system_server regionalization_file:dir r_dir_perms;
-allow system_server resourcecache_data_file:dir create_dir_perms;
-allow system_server resourcecache_data_file:file create_file_perms;
+#################### RECOVERY DATA PARTITION FOR CARRIER ###################
+service carrier_switcher /system/bin/sh /system/vendor/speccfg/switch_spec.sh
+    user root
+    group root
+    disabled
+    oneshot
+
+on post-fs-data
+    start carrier_switcher
+    wait /data/switch_spec
+
+################################ CMCC APP ##################################
+# backupAppData
+service backupAppData /system/bin/sh /system/vendor/bin/backupAppData.sh
+    seclabel u:r:backup_service:s0
+    disabled
+    oneshot
+
+# recoverAppData
+service recoverAppData /system/bin/sh /system/vendor/bin/recoverAppData.sh
+    seclabel u:r:backup_service:s0
+    disabled
+    oneshot

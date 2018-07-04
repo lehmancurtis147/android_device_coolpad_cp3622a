@@ -13,5 +13,11 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 #
+$(call inherit-product, $(SRC_TARGET_DIR)/product/full_base.mk)
+$(call inherit-product, device/coolpad/cp3622a/device.mk)
 
-PRODUCT_MAKEFILES := $(LOCAL_DIR)/lineage_cp3622a.mk
+PRODUCT_NAME := lineage_cp3622a
+PRODUCT_DEVICE := cp3622a
+PRODUCT_BRAND := Android
+PRODUCT_MODEL := cp3622a
+PRODUCT_MANUFACTURER := coolpad

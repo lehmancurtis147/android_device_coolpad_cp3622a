@@ -20,8 +20,12 @@
 # to only building on ARM if they include assembly. Individual makefiles
 # are responsible for having their own logic, for fine-grained control.
 
-LOCAL_PATH := $(call my-dir)
+LOCAL_PATH := ($(call my-dir)/device/coolpad/cp3622a)
 
-ifeq ($(TARGET_DEVICE),cp3622a)
-include $(call all-makefiles-under,$(LOCAL_PATH))
+ifeq ($(filter cp3622a,$(TARGET_DEVICE)),)
+
+include $(call all-subdir-makefiles,$(LOCAL_PATH))
+
+include $(CLEAR_VARS)
+
 endif
