@@ -14,4 +14,4 @@
 # limitations under the License.
 #
 
-PRODUCT_MAKEFILES := $(LOCAL_DIR)/lineage_cp3622a.mk
+PRODUCT_MAKEFILES := $(LOCAL_DIR)/cm_cp3622a.mk

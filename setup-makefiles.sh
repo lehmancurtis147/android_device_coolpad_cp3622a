@@ -18,17 +18,11 @@
 
 set -e
 
-DEVICE=cp3622a
-VENDOR=coolpad
-
-<<<<<<< HEAD
 # Required!
-export DEVICE=cp3622a/
-export DEVICE_COMMON=msm8909-common/
-export VENDOR=coolpad/
-=======
+export DEVICE=cp3622a
+export VENDOR=coolpad
+
 INITIAL_COPYRIGHT_YEAR=2016
->>>>>>> afe0437d5492302802b9330d59c07390b875290b
 
 # Load extract_utils and do some sanity checks
 MY_DIR="${BASH_SOURCE%/*}"

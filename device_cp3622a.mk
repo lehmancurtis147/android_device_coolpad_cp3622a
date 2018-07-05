@@ -34,8 +34,4 @@ ro.bootloader.mode=download \
 ro.mount.fs=EXT4 \
 ro.persist.partition.support=no
 
-PRODUCT_COPY_FILES_OVERRIDES += \
-    root/fstab.goldfish \
-    root/init.goldfish.rc \
-    recovery/root/fstab.goldfish
 
