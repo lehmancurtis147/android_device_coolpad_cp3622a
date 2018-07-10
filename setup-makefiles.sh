@@ -18,7 +18,6 @@
 
 set -e
 
-# Required!
 export DEVICE=cp3622a
 export VENDOR=coolpad
 
