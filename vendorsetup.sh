@@ -16,4 +16,3 @@
 
 add_lunch_combo cm_cp3622a-userdebug
 add_lunch_combo cm_cp3622a-eng
-add_lunch_combo full_cp3622a-userdebug
