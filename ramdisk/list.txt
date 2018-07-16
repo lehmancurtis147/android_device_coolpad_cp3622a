@@ -1,3 +1,0 @@
-./ueventd.qcom.rc
-./init.qcom.rc
-./init.qcom.usb.rc
