@@ -1,11 +1,11 @@
 #
-# Copyright 2014 The Android Open-Source Project
+# Copyright (C) 2017 The Android Open-Source Project
 #
 # Licensed under the Apache License, Version 2.0 (the "License");
 # you may not use this file except in compliance with the License.
 # You may obtain a copy of the License at
 #
-#      http://www.apache.org/licenses/LICENSE-2.0
+# http://www.apache.org/licenses/LICENSE-2.0
 #
 # Unless required by applicable law or agreed to in writing, software
 # distributed under the License is distributed on an "AS IS" BASIS,
@@ -13,10 +13,22 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 #
-$(call inherit-product, device/coolpad/cp3622a/device.mk)
 
-PRODUCT_NAME := cm_cp3622a
-PRODUCT_DEVICE := cp3622a
-PRODUCT_BRAND := Coolpad
-PRODUCT_MODEL := cp3622a
-PRODUCT_MANUFACTURER := coolpad
+# encryption support
+on init
+    chmod 0660 /dev/qseecom
+    chown system drmrpc /dev/qseecom
+    chmod 0664 /dev/ion
+    chown system system /dev/ion
+
+
+service qseecomd /sbin/qseecomd
+    class core
+    disabled
+    user root
+    group root system drmrpc
+    seclabel u:r:recovery:s0
+
+on property:ro.crypto.state=encrypted
+    start qseecomd
+

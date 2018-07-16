@@ -1,5 +1,5 @@
 #
-# Copyright (C) 2016 The CyanogenMod Project
+# Copyright (C) 2017 The Android Open-Source Project
 #
 # Licensed under the Apache License, Version 2.0 (the "License");
 # you may not use this file except in compliance with the License.
@@ -14,189 +14,219 @@
 # limitations under the License.
 #
 
+# https://forum.xda-developers.com/android/software/twrp-flags-boardconfig-mk-t3333970
+# http://rootzwiki.com/topic/23903-how-to-compile-twrp-from-source/
+
 LOCAL_PATH := device/coolpad/cp3622a
 
-TARGET_SPECIFIC_HEADER_PATH := $(LOCAL_PATH)/include
-
-# Platform
+### Platform
+# TARGET_NO_BOOTLOADER tells TWRP, that the phone doesn't have a fastboot mode. If you set this
+# flag to true, TWRP will hide the "Reboot to Bootloader/Fastboot" Button
 TARGET_NO_BOOTLOADER := false
-BOARD_VENDOR := coolpad
+
 TARGET_BOARD_PLATFORM := msm8909
-TARGET_SOC := msm8909
-TARGET_SLSI_VARIANT := cm
 TARGET_BOARD_PLATFORM_GPU := qcom-adreno304
 TARGET_BOOTLOADER_BOARD_NAME := msm8909
+
 TARGET_BOARD_SUFFIX := _32
+TARGET_BUILD_APPS := "all"
 TARGET_ARCH := arm
 TARGET_ARCH_VARIANT := armv7-a-neon
 TARGET_CPU_ABI := armeabi-v7a
 TARGET_CPU_ABI2 := armeabi
 TARGET_CPU_VARIANT := cortex-a7
-TARGET_CPU_CORTEX_A7 := true
-TARGET_GLOBAL_CFLAGS += -mtune=cortex-a7 -mfpu=neon-vfpv4 -mfloat-abi=softfp
-TARGET_GLOBAL_CPPFLAGS += -mtune=cortex-a7 -mfpu=neon-vfpv4 -mfloat-abi=softfp
 
-# Bootloader
-TARGET_BOOTLOADER_BOARD_NAME := sbl1.mbn
+# Architecture Extensions 
+ARCH_ARM_HAVE_NEON := true
+ARCH_ARM_HAVE_VFP := true
 
-# codename
-TARGET_OTA_ASSERT_DEVICE := cp3622a
+TARGET_GLOBAL_CFLAGS   += -mfpu=neon -mfloat-abi=softfp
+TARGET_GLOBAL_CPPFLAGS += -mfpu=neon -mfloat-abi=softfp
 
-# device tree path
-DEVICE_PATH := device/coolpad/cp3622a
+### Kernel
+BOARD_KERNEL_BASE         := 0x80000000
+BOARD_KERNEL_PAGESIZE     := 2048
+BOARD_KERNEL_OFFSET       := 0x00008000
+BOARD_RAMDISK_OFFSET      := 0x01000000
+BOARD_KERNEL_TAGS_OFFSET  := 0x00000100
+BOARD_KERNEL_SEPARATED_DT := false
+BOARD_KERNEL_CMDLINE := \
+	console=ttyHSL0,115200,n8 \
+	androidboot.console=ttyHSL0 \
+	androidboot.hardware=qcom \
+	user_debug=31 \
+	msm_rtb.filter=0x3F \
+	ehci-hcd.park=3 \
+	androidboot.bootdevice=7824900.sdhci \
+	lpm_levels.sleep_disabled=1 \
+	earlyprintk
+#BOARD_KERNEL_CMDLINE += androidboot.selinux=permissive
+BOARD_MKBOOTIMG_ARGS := \
+	--base $(BOARD_KERNEL_BASE) \
+	--pagesize $(BOARD_KERNEL_PAGESIZE) \
+	--kernel_offset $(BOARD_KERNEL_OFFSET) \
+	--ramdisk_offset $(BOARD_RAMDISK_OFFSET) \
+	--tags_offset $(BOARD_KERNEL_TAGS_OFFSET) \
+	--cmdline '$(BOARD_KERNEL_CMDLINE)'
+TARGET_PREBUILT_KERNEL := $(LOCAL_PATH)/kernel
 
-# include path
-TARGET_SPECIFIC_HEADER_PATH += $(DEVICE_PATH)/include
+### Qualcomm
+#BOARD_USES_QCOM_HARDWARE := true
+#COMMON_GLOBAL_CFLAGS += -DQCOM_HARDWARE
+TARGET_ENABLE_QC_AV_ENHANCEMENTS := true
+TARGET_USE_QCOM_BIONIC_OPTIMIZATION := true
+# It has to point to /sys/devices/ directory without /sys/
+TARGET_PLATFORM_DEVICE_BASE := /devices/soc.0/
+#TARGET_INIT_VENDOR_LIB := libinit_msm
+#TARGET_LIBINIT_DEFINES_FILE := $(LOCAL_PATH)/init/...
 
-# Inline kernel building
-BOARD_KERNEL_BASE := 0x80000000
-BOARD_KERNEL_CMDLINE := console=ttyHSL0,115200,n8 androidboot.console=ttyHSL0 androidboot.hardware=qcom user_debug=31 msm_rtb.filter=0x3F ehci-hcd.park=3 androidboot.bootdevice=7824900.sdhci lpm_levels.sleep_disabled=1 earlyprintk
-BOARD_RAMDISK_OFFSET := 0x01000000
-BOARD_KERNEL_PAGESIZE := 2048
-BOARD_KERNEL_SEPARATED_DT := true
-BOARD_KERNEL_TAGS_OFFSET := 0x00000100
-TARGET_KERNEL_CONFIG := prebuilt
+# Use qcom power hal
+TARGET_POWERHAL_VARIANT := qcom
+TARGET_USES_CPU_BOOST_HINT := true
 
-# ANT+
-BOARD_ANT_WIRELESS_DEVICE := "qualcomm-smd"
+### Encryption
+TARGET_HW_DISK_ENCRYPTION := true
+TW_INCLUDE_CRYPTO := true
+TARGET_KEYMASTER_WAIT_FOR_QSEE := true
+TARGET_PROVIDES_KEYMASTER := false
 
-# Audio
-AUDIO_FEATURE_ENABLED_FM := true
-AUDIO_FEATURE_ENABLED_KPI_OPTIMIZE := true
-BOARD_USES_ALSA_AUDIO := true
+### Partitions
+BOARD_CACHEIMAGE_FILE_SYSTEM_TYPE := ext4
+BOARD_PERSISTIMAGE_FILE_SYSTEM_TYPE := ext4
+BOARD_BOOTIMAGE_PARTITION_SIZE     := 16384
+BOARD_RECOVERYIMAGE_PARTITION_SIZE := 16384
+BOARD_SYSTEMIMAGE_PARTITION_SIZE   := 1782580
+BOARD_CACHEIMAGE_PARTITION_SIZE    := 262144
+BOARD_PERSISTIMAGE_PARTITION_SIZE  := 32768
+BOARD_OEMIMAGE_PARTITION_SIZE      := 1024
+BOARD_USERDATAIMAGE_PARTITION_SIZE := 5415563
+BOARD_FLASH_BLOCK_SIZE := 7634944
+TARGET_USERIMAGES_USE_EXT4 := true
+# Include F2FS support. Make sure your kernel supports F2FS!
+TARGET_USERIMAGES_USE_F2FS := false
+TW_INCLUDE_NTFS_3G := true
+TW_NO_EXFAT := true
+TW_NO_EXFAT_FUSE := true
+# Use this flag if the board has an EXT4 partition larger than 2 GiB
+BOARD_HAS_LARGE_FILESYSTEM := false
 
-# Bluetooth
-BOARD_BLUETOOTH_BDROID_BUILDCFG_INCLUDE_DIR := $(DEVICE_PATH)/bluetooth
-BOARD_HAVE_BLUETOOTH := true
-BOARD_HAVE_BLUETOOTH_QCOM := true
-BLUETOOTH_HCI_USE_MCT := true
+### Logs
+TARGET_USES_LOGD := true
+TWRP_INCLUDE_LOGCAT := true
 
-# Build
-TARGET_SYSTEMIMAGE_USE_SQUISHER := true
+### SELinux
+TWHAVE_SELINUX := true
+#include device/qcom/qcom-sepolicy/sepolicy.mk
 
-# Camera
-USE_DEVICE_SPECIFIC_CAMERA := true
+BOARD_SEPOLICY_DIRS += \
+	$(LOCAL_PATH)/sepolicy
+
+#BOARD_SEPOLICY_UNION += \
+
+### MISC
+BOARD_USES_QC_TIME_SERVICES := true
 
 # Charger
+CHARGING_ENABLED_PATH := /sys/class/power_supply/battery/charging_enabled
 BOARD_CHARGER_ENABLE_SUSPEND := true
 BOARD_CHARGER_SHOW_PERCENTAGE := true
 
-# Crypto
-TARGET_HW_DISK_ENCRYPTION := true
+# Init of the devices boots under 1s but just in case it is hot and charging...
+TARGET_INCREASES_COLDBOOT_TIMEOUT := true
 
-# FM radio
-TARGET_QCOM_NO_FM_FIRMWARE := true
-
-# Graphics
-MAX_EGL_CACHE_KEY_SIZE := 12*1024
-MAX_EGL_CACHE_SIZE := 2048*1024
-NUM_FRAMEBUFFER_SURFACE_BUFFERS := 3
-OVERRIDE_RS_DRIVER := libRSDriver_adreno.so
-TARGET_USES_ION := true
-USE_OPENGL_RENDERER := true
-
-# Hardware tunables framework
-BOARD_HARDWARE_CLASS += $(DEVICE_PATH)/cmhw
-
-# Init
-TARGET_INIT_VENDOR_LIB := libinit_msm
-TARGET_UNIFIED_DEVICE := true
-TARGET_PLATFORM_DEVICE_BASE := /devices/soc.0/
-
-# Kernel
-TARGET_KERNEL_CONFIG := cm-cp3622a_defconfig
-TARGET_KERNEL_SOURCE := kernel/coolpad/cp3622a
-TARGET_KERNEL_ARCH := arm
-TARGET_KERNEL_HEADER_ARCH := arm
-
-# Extracted with libbootimg
-BOARD_CUSTOM_BOOTIMG_MK := 
-BOARD_KERNEL_SEPERATED_DT := true
-BOARD_MKBOOTIMG_ARGS := --kernel_offset 0x00008000 --ramdisk_offset 0x01000000 --tags_offset 0x00000100 --board
-TARGET_CUSTOM_DTBTOOL := dtbtoolmsm8909
-
-# Lights
-TARGET_PROVIDES_LIBLIGHT := true
-
-# Memory
-MALLOC_IMPL := dlmalloc
-
-# Partition sizes
-BOARD_BOOTIMAGE_PARTITION_SIZE := 16384
-BOARD_RECOVERYIMAGE_PARTITION_SIZE := 16384
-BOARD_SYSTEMIMAGE_PARTITION_SIZE := 1782580
-BOARD_USERDATAIMAGE_PARTITION_SIZE := 0 
-BOARD_CACHEIMAGE_PARTITION_SIZE := 262144
-BOARD_PERSISTIMAGE_PARTITION_SIZE := 32768
-BOARD_FLASH_BLOCK_SIZE := 2048 # (BOARD_KERNEL_PAGESIZE * 64)
-
-# Power
-TARGET_POWERHAL_VARIANT := qcom
-
-# QCOM hardware
-BOARD_USES_QCOM_HARDWARE := true
-
-# properties
-TARGET_SYSTEM_PROP += $(DEVICE_PATH)/system.prop
-
-# Recovery
-TARGET_RECOVERY_FSTAB := $(LOCAL_PATH)/twrp/twrp.fstab
-TARGET_RECOVERY_PIXEL_FORMAT := "RGB_565"
-TARGET_USERIMAGES_USE_EXT4 := true
-COMMON_GLOBAL_CFLAGS += -DNO_SECURE_DISCARD
-
-# SELinux
-include device/qcom/sepolicy/sepolicy.mk
-
-BOARD_SEPOLICY_DIRS += \
-    device/coolpad/cp3622a/sepolicy
-
-BOARD_SEPOLICY_UNION += \
-    file.te \
-    file_contexts \
-    kernel.te \
-    mediaserver.te \
-    mm-qcamerad.te \
-    property.te \
-    property_contexts \
-    rmt_storage.te \
-    system_server.te \
-    vold.te \
-    wcnss_service.te
-
-# Vold
-TARGET_USE_CUSTOM_LUN_FILE_PATH := /sys/devices/platform/msm_hsusb/gadget/lun1/file
-
+### Recovery
+TARGET_RECOVERY_FSTAB := $(LOCAL_PATH)/recovery.fstab
+# BGRA_8888, RGBA_8888, RGBX_8888, RGB_565
+#TARGET_RECOVERY_PIXEL_FORMAT := "RGBA_8888"
+BOARD_SUPPRESS_SECURE_ERASE := true
 RECOVERY_VARIANT := twrp
 
-# TWRP
-TW_NO_EXFAT := true
-TWHAVE_SELINUX := true
-TW_THEME := portrait_hdpi
-TW_NO_EXFAT_FUSE := true
-TW_USE_MODEL_HARDWARE_ID_FOR_DEVICE_ID := true
-TW_EXCLUDE_SUPERSU := true
-TW_ALWAYS_RMRF := true
-TARGET_RECOVERY_PIXEL_FORMAT := "RGB_565"
-DEVICE_RESOLUTION := 480x854
+### TWRP
+RECOVERY_GRAPHICS_USE_LINELENGTH := true
+# Timezone fix for some Qualcomm devices
+TARGET_RECOVERY_QCOM_RTC_FIX := true
+TARGET_USE_CUSTOM_LUN_FILE_PATH :=  /sys/devices/platform/msm_hsusb/gadget/lun0/file
 TW_BRIGHTNESS_PATH := /sys/class/leds/lcd-backlight/brightness
 TW_MAX_BRIGHTNESS := 255
-# Wifi
-BOARD_HAS_QCOM_WLAN := true
-BOARD_HAS_QCOM_WLAN_SDK := true
-BOARD_HOSTAPD_DRIVER := NL80211
-BOARD_HOSTAPD_PRIVATE_LIB := lib_driver_cmd_qcwcn
-BOARD_WLAN_DEVICE := qcwcn
-BOARD_WPA_SUPPLICANT_DRIVER := NL80211
-BOARD_WPA_SUPPLICANT_PRIVATE_LIB := lib_driver_cmd_qcwcn
-TARGET_PROVIDES_WCNSS_QMI := true
-TARGET_USES_QCOM_WCNSS_QMI := true
-WIFI_DRIVER_FW_PATH_AP := "ap"
-WIFI_DRIVER_FW_PATH_STA := "sta"
-WPA_SUPPLICANT_VERSION := VER_0_8_X
+TW_DEFAULT_BRIGHTNESS := 10
+#TW_NO_SCREEN_TIMEOUT := false
+#TW_NO_SCREEN_BLANK := false
+TW_NEVER_UNMOUNT_SYSTEM := false
 
-# Use build_number tag for ota file
-BUILD_NUMBER := $(PRODUCT_VERSION_MAJOR).$(PRODUCT_VERSION_MINOR)-$(shell date -u +%Y%m%d)-$(CM_BUILDTYPE)
+# You only want to use TW_TARGET_USES_QCOM_BSP to enable overlay graphics if you can't get a
+# display with the standard fbdev graphics code. And if you define it, you need to build the kernel
+# from source together with the recovery, or TARGET_CUSTOM_KERNEL_HEADERS must be pointing to the
+# include directory for the kernel headers.
+#TW_TARGET_USES_QCOM_BSP := true
+#COMMON_GLOBAL_CFLAGS += -DQCOM_BSP
 
-# include vendor
-include vendor/coolpad/cp3622a/BoardConfigVendor.mk
+# Set to true in order to enable localization
+TW_EXTRA_LANGUAGES := true
+TW_DEFAULT_LANGUAGE := en
+# Exclude SuperSu e.g. to save some space or for different other reasons
+TW_EXCLUDE_SUPERSU := false
+# Removes the "Bootloader" button from the "Reboot" menu
+TW_NO_REBOOT_BOOTLOADER := false
+# Removes the "Recovery" button from the Reboot menu
+TW_NO_REBOOT_RECOVERY := false
+# Removes the "Mount USB Storage" button  from the "Mount" menu on devices that don't support the
+# USB storage. USB Mass Storage is only supported if explicitly enabled in the kernel.
+TW_NO_USB_STORAGE := false
+# Add an option in the "Reboot" menu to reboot into Download Mode (for Samsung devices)
+TW_HAS_DOWNLOAD_MODE := false
+#TW_NO_BATT_PERCENT := false
+# Some devices don't have a temp sensor. Disable in such case to stop spamming the recovery log
+TW_NO_CPU_TEMP := false
+
+TW_HAS_NO_BOOT_PARTITION := false
+TW_HAS_NO_RECOVERY_PARTITION := false
+
+# MTP support
+TW_EXCLUDE_MTP := true
+
+TW_HAS_USB_STORAGE := true
+# For people who would want to have ToyBox rather than Busybox
+TW_USE_TOOLBOX := false
+# An awesome way to take screenshots. Back-end improvement, no noticeable user side changes.
+# Screenshots work without it too
+TW_INCLUDE_FB2PNG := true
+
+# BOARD_HAS_NO_REAL_SDCARD when "true" disables things like sdcard partitioning and may save you
+# some space if TWRP isn't fitting in your recovery patition
+#BOARD_HAS_NO_REAL_SDCARD := false
+# RECOVERY_SDCARD_ON_DATA when "true" enables proper handling of /data/media on devices that have
+# this folder for storage (most Honeycomb and devices that originally shipped with ICS like Galaxy
+# Nexus) This flag is not required for these types of devices though. If you do not define this
+# flag and also do not include any references to /sdcard, /internal_sd, /internal_sdcard, or /emmc
+# in your fstab, then we will automatically assume that the device is using emulated storage.
+RECOVERY_SDCARD_ON_DATA := true
+
+#TW_INTERNAL_STORAGE_PATH := "/data/media"
+#TW_INTERNAL_STORAGE_MOUNT_POINT := "data"
+#TW_EXTERNAL_STORAGE_PATH := "/sdcard1"
+#TW_EXTERNAL_STORAGE_MOUNT_POINT := "sdcard1"
+
+# This TW_THEME flag replaces the older DEVICE_RESOLUTION flag. TWRP now uses scaling to stretch
+# any theme to fit the screen resolution. There are currently 5 settings which are:
+#   portrait_mdpi  = 320x480 480x800 480x854 540x960
+#   portrait_hdpi  = 720x1280 800x1280 1080x1920 1200x1920 1440x2560 1600x2560
+#   watch_mdpi     = 240x240 280x280 320x320
+#   landscape_mdpi = 800x480 1024x600 1024x768
+#   landscape_hdpi = 1280x800 1920x1200 2560x1600
+TW_THEME := portrait_hdpi
+TWRP_NEW_THEME := true
+#TW_CUSTOM_THEME  := /some/path/
+
+### Backup
+# TWRP backup folder is named after the "Serial" entry in the /proc/cpuinfo file. Some devices
+# don't show their serial number in that file and the "Serial" entry shows "0000000000000000". By
+# using this flag, TWRP will use "ro.product.model" as the folder name instead.
+TW_USE_MODEL_HARDWARE_ID_FOR_DEVICE_ID := true
+# Remove the ability to encrypt backups with a password
+TW_EXCLUDE_ENCRYPTED_BACKUPS := false
+# The backup of /data/ doesn't include the /data/media/ directory, which contains a lot of user's
+# files (images, photos, movies, etc). This options ensures that the backup file will have all of
+# the user's data when backed to an external storage.
+# -- https://twrp.me/faq/datamedia.html
+#TW_BACKUP_DATA_MEDIA := true
+
