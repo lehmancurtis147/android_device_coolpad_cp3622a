@@ -17,7 +17,7 @@
 LOCAL_PATH := device/coolpad/cp3622a
 
 ifeq ($(TARGET_PREBUILT_KERNEL),)
-	LOCAL_KERNEL := $(LOCAL_PATH)/kernel
+	LOCAL_KERNEL := $(LOCAL_PATH)/prebuilt/kernel
 else
 	LOCAL_KERNEL := $(TARGET_PREBUILT_KERNEL)
 endif
@@ -26,7 +26,6 @@ $(call inherit-product, $(SRC_TARGET_DIR)/product/full_base_telephony.mk)
 $(call inherit-product, frameworks/native/build/phone-xhdpi-2048-dalvik-heap.mk)
 $(call inherit-product, vendor/omni/config/common.mk)
 $(call inherit-product, device/coolpad/cp3622a/device.mk)
-$(call inherit-product, device/qcom/sepolicy/sepolicy.mk)
 
 
 # Device identifier. This must come after all inclusions
