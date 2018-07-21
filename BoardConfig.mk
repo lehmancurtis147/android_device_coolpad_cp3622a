@@ -102,13 +102,10 @@ BOARD_SEPOLICY_DIRS += \
 BOARD_USES_QC_TIME_SERVICES := true
 
 # Charger
-CHARGING_ENABLED_PATH := /sys/class/power_supply/battery/charging_enabled
-BOARD_CHARGER_ENABLE_SUSPEND := true
 BOARD_CHARGER_SHOW_PERCENTAGE := true
 
 # Recovery
 TARGET_RECOVERY_FSTAB := $(LOCAL_PATH)/recovery.fstab
-BOARD_SUPPRESS_SECURE_ERASE := true
 RECOVERY_VARIANT := twrp
 
 # TWRP
@@ -118,7 +115,6 @@ TARGET_USE_CUSTOM_LUN_FILE_PATH :=  /sys/devices/platform/msm_hsusb/gadget/lun0/
 TW_BRIGHTNESS_PATH := /sys/class/leds/lcd-backlight/brightness
 TW_MAX_BRIGHTNESS := 255
 TW_DEFAULT_BRIGHTNESS := 10
-TW_NEVER_UNMOUNT_SYSTEM := false
 TW_TARGET_USES_QCOM_BSP := true
 COMMON_GLOBAL_CFLAGS += -DQCOM_BSP
 
@@ -126,10 +122,5 @@ COMMON_GLOBAL_CFLAGS += -DQCOM_BSP
 TW_EXTRA_LANGUAGES := true
 TW_DEFAULT_LANGUAGE := en
 
-# MTP support
-TW_EXCLUDE_MTP := true
-TW_HAS_USB_STORAGE := true
-TW_INCLUDE_FB2PNG := true
-TWRP_NEW_THEME := true
 TW_THEME := portrait_hdpi
 TW_USE_MODEL_HARDWARE_ID_FOR_DEVICE_ID := true
