@@ -51,7 +51,7 @@ BOARD_TAGS_ADDRESS := 0x80000100
 BOARD_TAGS_OFFSET  := 0x00000100
 BOARD_KERNEL_SEPARATED_DT := false
 BOARD_DT_SIZE             := 157696
-BOARD_KERNEL_CMDLINE :=
+BOARD_KERNEL_CMDLINE :=mom
 	console=ttyHSL0,115200,n8
 	androidboot.console=ttyHSL0
 	androidboot.hardware=qcom 
@@ -68,7 +68,7 @@ BOARD_MKBOOTIMG_ARGS := \
 	--kernel_offset $(BOARD_KERNEL_OFFSET) \
 	--ramdisk_offset $(BOARD_RAMDISK_OFFSET) \
 	--tags_offset $(BOARD_KERNEL_TAGS_OFFSET) \
-	--cmdline '$(BOARD_KERNEL_CMDLINE)'
+	--cmdline $(BOARD_KERNEL_CMDLINE)
 TARGET_PREBUILT_KERNEL := $(LOCAL_PATH)/prebuilt/kernel
 
 # Qualcomm
@@ -101,22 +101,22 @@ BOARD_SEPOLICY_DIRS += \
 # MISC
 BOARD_USES_QC_TIME_SERVICES := true
 
-# Charger
-BOARD_CHARGER_SHOW_PERCENTAGE := true
+
+
 
 # Recovery
 TARGET_RECOVERY_FSTAB := $(LOCAL_PATH)/recovery.fstab
 RECOVERY_VARIANT := twrp
 
 # TWRP
-RECOVERY_GRAPHICS_USE_LINELENGTH := true
+
 TARGET_RECOVERY_QCOM_RTC_FIX := true
 TARGET_USE_CUSTOM_LUN_FILE_PATH :=  /sys/devices/platform/msm_hsusb/gadget/lun0/file
 TW_BRIGHTNESS_PATH := /sys/class/leds/lcd-backlight/brightness
 TW_MAX_BRIGHTNESS := 255
 TW_DEFAULT_BRIGHTNESS := 10
 TW_TARGET_USES_QCOM_BSP := true
-COMMON_GLOBAL_CFLAGS += -DQCOM_BSP
+
 
 # Set to true in order to enable localization
 TW_EXTRA_LANGUAGES := true
