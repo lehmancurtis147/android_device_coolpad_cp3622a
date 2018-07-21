@@ -37,7 +37,7 @@ ARCH_ARM_HAVE_VFP := true
 
 # Kernel
 BOARD_KERNEL_BASE         := 0x80000000
-BOARD_KERNEL_PAGESIZE     := 2048
+BOARD_PAGESIZE     := 2048
 BOARD_KERNEL_ADDRESS      := 0x80008000
 BOARD_KERNEL_OFFSET       := 0x00008000
 BOARD_KERNEL_SIZE         := 6511088
@@ -47,19 +47,19 @@ BOARD_SECOND_SIZE         := 0
 BOARD_RAMDISK_ADDRESS     := 0x81000000
 BOARD_RAMDISK_OFFSET      := 0x01000000
 BOARD_RAMDISK_SIZE        := 1151455
-BOARD_KERNEL_TAGS_ADDRESS := 0x80000100
-BOARD_KERNEL_TAGS_OFFSET  := 0x00000100
+BOARD_TAGS_ADDRESS := 0x80000100
+BOARD_TAGS_OFFSET  := 0x00000100
 BOARD_KERNEL_SEPARATED_DT := false
 BOARD_DT_SIZE             := 157696
-BOARD_KERNEL_CMDLINE := \
-	console=ttyHSL0,115200,n8 \
-	androidboot.console=ttyHSL0 \
-	androidboot.hardware=qcom \
-	user_debug=31 \
-	msm_rtb.filter=0x3F \
-	ehci-hcd.park=3 \
-	androidboot.bootdevice=7824900.sdhci \
-	lpm_levels.sleep_disabled=1 \
+BOARD_KERNEL_CMDLINE :=
+	console=ttyHSL0,115200,n8
+	androidboot.console=ttyHSL0
+	androidboot.hardware=qcom 
+	user_debug=31 
+	msm_rtb.filter=0x3F
+	ehci-hcd.park=3
+	androidboot.bootdevice=7824900.sdhci
+	lpm_levels.sleep_disabled=1
 	earlyprintk
 
 BOARD_MKBOOTIMG_ARGS := \
@@ -86,12 +86,12 @@ TARGET_USERIMAGES_USE_F2FS := true
 BOARD_BOOTIMAGE_PARTITION_SIZE     := 16777216
 BOARD_RECOVERYIMAGE_PARTITION_SIZE := 16777216
 BOARD_SYSTEMIMAGE_PARTITION_SIZE   := 1073741824
-TW_NO_EXFAT := true
-TW_NO_EXFAT_FUSE := true
 
-# Logs
-TARGET_USES_LOGD := true
-TWRP_INCLUDE_LOGCAT := true
+
+
+
+
+
 
 # SELinux
 TWHAVE_SELINUX := true
