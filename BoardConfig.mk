@@ -29,6 +29,8 @@ TARGET_CPU_ABI := armeabi-v7a
 TARGET_CPU_ABI2 := armeabi
 TARGET_CPU_VARIANT := cortex-a7
 
+TARGET_USES_PREBUILT_KERNEL := true
+
 # Kernel
 BOARD_KERNEL_BASE         := 0x80000000
 BOARD_KERNEL_PAGESIZE     := 2048
@@ -41,8 +43,8 @@ BOARD_RAMDISK_OFFSET      := 0x01000000
 BOARD_RAMDISK_SIZE        := 1151455
 BOARD_TAGS_ADDRESS := 0x80000100
 BOARD_TAGS_OFFSET  := 0x00000100
-BOARD_KERNEL_SEPARATED_DT := true
-BOARD_DT_SIZE             := 157696
+#BOARD_KERNEL_SEPARATED_DT := true
+#BOARD_DT_SIZE             := 157696
 BOARD_KERNEL_CMDLINE := console=ttyHSL0,115200,n8 androidboot.console=ttyHSL0 androidboot.hardware=qcom user_debug=31 msm_rtb.filter=0x3F ehci-hcd.park=3 androidboot.bootdevice=7824900.sdhci lpm_levels.sleep_disabled=1 earlyprintk
 BOARD_KERNEL_CMDLINE += selinux=1 enforcing=0 androidboot.selinux=permissive
 
@@ -54,13 +56,13 @@ BOARD_MKBOOTIMG_ARGS := \
 	--tags_offset $(BOARD_KERNEL_TAGS_OFFSET) \
 	--cmdline $(BOARD_KERNEL_CMDLINE)
 
-TARGET_KERNEL_SOURCE := kernel/coolpad/cp3622a
-TARGET_KERNEL_CONFIG := msm8909_defconfig
+#TARGET_KERNEL_SOURCE := kernel/coolpad/cp3622a
+#TARGET_KERNEL_CONFIG := msm8909_defconfig
 TARGET_PRODUCT := omni_cp3622a
 TARGET_DEVICE := cp3622a
 
 # prebuilt kernel
-# TARGET_PREBUILT_KERNEL := $(DEVICE_PATH)/prebuilt/kernel
+TARGET_PREBUILT_KERNEL := $(DEVICE_PATH)/prebuilt/kernel
 
 # Init
 TARGET_PLATFORM_DEVICE_BASE := /devices/soc.0/
