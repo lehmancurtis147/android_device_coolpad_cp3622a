@@ -14,10 +14,5 @@
 # limitations under the License.
 #
 
-ifneq ($(filter cp3622a,$(TARGET_DEVICE)),)
-
-LOCAL_PATH := $(call my-dir)
-
-include $(call all-makefiles-under,$(LOCAL_PATH))
-
-endif
+PRODUCT_MAKEFILES := \
+    $(LOCAL_DIR)/omni_cp3622a.mk
