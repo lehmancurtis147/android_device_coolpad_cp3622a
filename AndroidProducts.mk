@@ -14,5 +14,4 @@
 # limitations under the License.
 #
 
-PRODUCT_MAKEFILES := \
-    $(LOCAL_DIR)/omni_cp3622a.mk
+PRODUCT_MAKEFILES := $(LOCAL_DIR)/omni_cp3622a.mk

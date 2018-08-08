@@ -1,2 +1,0 @@
-allow sdcardd unlabeled:dir mounton;
-allow sdcardd unlabeled:filesystem { mount unmount };

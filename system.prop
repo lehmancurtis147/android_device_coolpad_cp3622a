@@ -1,1 +1,3 @@
-persist.sys.usb.config=mtp,adb
+#
+# system.prop for cp3622a
+#

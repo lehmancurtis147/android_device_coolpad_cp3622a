@@ -20,19 +20,18 @@ PRODUCT_RELEASE_NAME := cp3622a
 # Inherit from the common Open Source product configuration
 $(call inherit-product, $(SRC_TARGET_DIR)/product/aosp_base_telephony.mk)
 
-# Inherit from our custom product configuration
-$(call inherit-product, vendor/omni/config/common.mk)
 
 PRODUCT_PACKAGES += \
 	charger_res_images \
 	charger
 
 # Device identifier. This must come after all inclusions
-PRODUCT_DEVICE := cp3622a
 PRODUCT_NAME := omni_cp3622a
-PRODUCT_BRAND := Coolpad
-PRODUCT_MODEL := 3622a
-PRODUCT_MANUFACTURER := Coolpad
+PRODUCT_DEVICE := cp3622a
+PRODUCT_BRAND := coolpad
+PRODUCT_MODEL := cp3622a
+PRODUCT_MANUFACTURER := coolpad
+
 
 PRODUCT_AAPT_CONFIG := normal mdpi xhdpi
 PRODUCT_AAPT_PREF_CONFIG := mdpi
