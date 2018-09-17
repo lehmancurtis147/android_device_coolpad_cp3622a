@@ -2,15 +2,15 @@
 TARGET_SCREEN_WIDTH := 480
 TARGET_SCREEN_HEIGHT := 854
 
-# Inherit some common CM stuff.
-$(call inherit-product, vendor/cm/config/common_full_phone.mk)
+# Inherit some common OMNIROM stuff.
+$(call inherit-product, vendor/omni/config/common_full_phone.mk)
 
 # Inherit device configuration
 $(call inherit-product, device/coolpad/cp3622a/cp3622a.mk)
 
 # Device identifier. This must come after all inclusions
 PRODUCT_DEVICE := cp3622a
-PRODUCT_NAME := cm_cp3622a
+PRODUCT_NAME := omni_cp3622a
 PRODUCT_BRAND := Coolpad
 PRODUCT_MODEL := Coolpad 3622a
 PRODUCT_MANUFACTURER := Coolpad

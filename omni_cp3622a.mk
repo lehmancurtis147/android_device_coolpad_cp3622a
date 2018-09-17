@@ -15,7 +15,7 @@
 #
 $(call inherit-product, device/coolpad/cp3622a/device.mk)
 
-PRODUCT_NAME := cm_cp3622a
+PRODUCT_NAME := omni_cp3622a
 PRODUCT_DEVICE := cp3622a
 PRODUCT_BRAND := Coolpad
 PRODUCT_MODEL := cp3622a
