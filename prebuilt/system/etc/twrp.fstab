@@ -1,0 +1,32 @@
+#device	     fstype		device2				flags
+/sbl1         emmc    /dev/block/platform/7824900.sdhci/mmcblk0p1
+/sbl1bak      emmc    /dev/block/platform/7824900.sdhci/mmcblk0p2
+/aboot        emmc    /dev/block/platform/7824900.sdhci/mmcblk0p3
+/abootbak     emmc    /dev/block/platform/7824900.sdhci/mmcblk0p4
+/rpm          emmc    /dev/block/platform/7824900.sdhci/mmcblk0p5
+/rpmbak       emmc    /dev/block/platform/7824900.sdhci/mmcblk0p6
+/tz           emmc    /dev/block/platform/7824900.sdhci/mmcblk0p7
+/tzbak        emmc    /dev/block/platform/7824900.sdhci/mmcblk0p8
+/pad          emmc    /dev/block/platform/7824900.sdhci/mmcblk0p9
+/modemst1     emmc    /dev/block/platform/7824900.sdhci/mmcblk0p10
+/modemst2     emmc    /dev/block/platform/7824900.sdhci/mmcblk0p11
+/misc         emmc    /dev/block/platform/7824900.sdhci/mmcblk0p12
+/params       emmc    /dev/block/platform/7824900.sdhci/mmcblk0p13
+/panic	      ext4    /dev/block/platform/7824900.sdhci/mmcblk0p14
+/fsc	      emmc    /dev/block/platform/7824900.sdhci/mmcblk0p15
+/ssd          emmc    /dev/block/platform/7824900.sdhci/mmcblk0p16
+/keystore     emmc    /dev/block/platform/7824900.sdhci/mmcblk0p17
+/config       emmc    /dev/block/platform/7824900.sdhci/mmcblk0p18
+/oem          emmc    /dev/block/platform/7824900.sdhci/mmcblk0p19
+/modem        vfat    /dev/block/platform/7824900.sdhci/mmcblk0p20
+/devinfo      emmc    /dev/block/platform/7824900.sdhci/mmcblk0p21
+/ddr          emmc    /dev/block/platform/7824900.sdhci/mmcblk0p22
+/fsg          emmc    /dev/block/platform/7824900.sdhci/mmcblk0p23
+/boot         emmc    /dev/block/platform/7824900.sdhci/mmcblk0p24	 flags=display="boot";backup=1				length=-16384
+/sec          emmc    /dev/block/platform/7824900.sdhci/mmcblk0p25
+/system       ext4    /dev/block/platform/7824900.sdhci/mmcblk0p26 	 flags=display="system";backup=1
+/persist      ext4    /dev/block/platform/7824900.sdhci/mmcblk0p27
+/cache        ext4    /dev/block/platform/7824900.sdhci/mmcblk0p28	 flags=display="cache";storage;wipeingui;backup=1
+/recovery     emmc    /dev/block/platform/7824900.sdhci/mmcblk0p29	 flags=display="recovery";backup=1
+/userdata     ext4    /dev/block/platform/7824900.sdhci/mmcblk0p30	 flags=display="data"backup=1				length=-5242880
+/sdcard       vfat    /devices/soc.0/7864900.sdhci/mmc_host1		 flags=display="micro-sdcard";storage;wipeingui;removable

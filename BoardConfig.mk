@@ -2,13 +2,16 @@ LOCAL_PATH := $(call my-dir)device/coolpad/cp3622a
 
 TARGET_SPECIFIC_HEADER_PATH := $(LOCAL_PATH)/include
 
+KBUILD_OUTPUT += \
+    $(mkdir "/home/curtis/android/5.1/out/target/product/cp3622a/obj/KERNEL_OBJ/usr")
+
 # Platform
+TARGET_CROSS_COMPILE := arm-linux-androideabi-
 TARGET_NO_BOOTLOADER := true
-BOARD_VENDOR := coolpad
+BOARD_VENDOR := Coolpad
 TARGET_PLATFORM := android-22
 TARGET_BOARD_PLATFORM := msm8909
 TARGET_SOC := qcom
-TARGET_SLSI_VARIANT := cm
 TARGET_BOARD_PLATFORM_GPU := qcom-adreno304
 TARGET_BOOTLOADER_BOARD_NAME := cp3622a
 TARGET_BOARD_SUFFIX := _32
@@ -49,9 +52,6 @@ BOARD_HAVE_BLUETOOTH := true
 BOARD_HAVE_BLUETOOTH_QCOM := true
 BLUETOOTH_HCI_USE_MCT := true
 
-# Build
-TARGET_SYSTEMIMAGE_USE_SQUISHER := true
-
 # Camera
 USE_DEVICE_SPECIFIC_CAMERA := true
 
@@ -75,10 +75,10 @@ USE_OPENGL_RENDERER := true
 
 # Init
 TARGET_INIT_VENDOR_LIB := libinit_msm
-TARGET_UNIFIED_DEVICE := true
 TARGET_PLATFORM_DEVICE_BASE := /devices/soc.0/
 
 # Kernel
+TARGET_USES_PREBUILT_KERNEL := true
 BOARD_CUSTOM_BOOTIMG_MK := $(LOCAL_PATH)/mkbootimg.mk
 BOARD_MKBOOTIMG_ARGS := --kernel_offset 0x00008000 --ramdisk_offset 0x01000000 --tags_offset 0x00000100 --board
 TARGET_KERNEL_HEADER_ARCH := arm
@@ -103,15 +103,20 @@ BOARD_RAMDISK_OFFSET := 0x01000000
 BOARD_SECOND_OFFSET := 0x00f00000
 BOARD_KERNEL_TAGS_OFFSET := 0x00000100           
 BOARD_KERNEL_SEPARATED_DT := true
+TARGET_KERNEL_CROSS_COMPILE := /home/curtis/android/5.1/ndk/toolchains/arm-linux-androideabi-4.8
 TARGET_KERNEL_CROSS_COMPILE_PREFIX := arm-eabi-
-TARGET_KERNEL_SOURCE := kernel/coolpad/cp3622a
+TARGET_KERNEL_SOURCE := /kernel/coolpad/cp3622a
 TARGET_COMPILE_WITH_MSM_KERNEL := true
-TARGET_KERNEL_CONFIG := cp3622a_defconfig
+TARGET_KERNEL_DEFCONFIG := cp3622a_defconfig
 TARGET_PREBUILT_KERNEL := $(LOCAL_PATH)/prebuilt/kernel
-TARGET_CUSTOM_DTBTOOL := $(LOCAL_PATH)/dtbtool/Android.mk
+
+PRODUCT_COPY_FILES += \
+    $(TARGET_PREBUILT_KERNEL):/home/curtis/android/5.1/out/target/product/cp3622a/obj/KERNEL_OBJ/usr
+
+# TARGET_CUSTOM_DTBTOOL := $(LOCAL_PATH)/dtbtool/Android.mk
 
 # Extracted with libbootimg
-BOARD_CUSTOM_BOOTIMG_MK :=  $(LOCAL_PATH)/mkbootimg.mk
+# BOARD_CUSTOM_BOOTIMG_MK :=  $(LOCAL_PATH)/mkbootimg.mk
 BOARD_KERNEL_SEPERATED_DT := true
 BOARD_MKBOOTIMG_ARGS := --kernel_offset 0x00008000 --ramdisk_offset 0x01000000 --tags_offset 0x00000100 --board
 TARGET_CUSTOM_DTBTOOL := $(LOCAL_PATH)/dtbtool/Android.mk
@@ -218,5 +223,6 @@ TARGET_KERNEL_MODULES += CORE_CTL_MODULE
 
 # include vendor
 include vendor/coolpad/cp3622a/BoardConfigVendor.mk
+
 # Use build_number tag for ota file
 BUILD_NUMBER := $(PRODUCT_VERSION_MAJOR).$(PRODUCT_VERSION_MINOR)-$(shell date -u +%Y%m%d)-$(OMNI_BUILDTYPE)

@@ -16,7 +16,8 @@
 
 # Sample: This is where we'd set a backup provider if we had one
 # $(call inherit-product, device/sample/products/backup_overlay.mk)
-
+LOCAL_PATH := $(call my-dir)
+include $(CLEAR_VARS)
 
 # Get the prebuilt list of APNs
 $(call inherit-product, vendor/omni/config/gsm.mk)
