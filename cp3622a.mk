@@ -72,11 +72,11 @@ PRODUCT_COPY_FILES += \
 	
 # coolpad sensors fix
 PRODUCT_COPY_FILES += \
-    $(LOCAL_PATH)/sensors/sensors.msm8909.so:system/lib/hw/sensors.msm8909.so
+    $(LOCAL_PATH)/sensors/sensors.msm8909.so:system/lib/hw/sensors.msm8909.so \
 	$(LOCAL_PATH)/sensors/sensors.qcom.so:system/lib/hw/sensors.qcom.so
 
 # Libcutils
-PRODUCT_COPY_FILES += 
+PRODUCT_COPY_FILES += \
 	$(LOCAL_PATH)/sensors/libcutils.so:system/lib/hw/libcutils.so
 
 #Twrp fstab
@@ -90,64 +90,64 @@ PRODUCT_COPY_FILES += \
 
 # Feature definition files for msm8909
 PRODUCT_COPY_FILES += \
-  	$(LOCAL_PATH)/frameworks/native/data/etc/android.hardware.bluetooth.xml:system/etc/permissions/android.hardware.bluetooth.xml
-	$(LOCAL_PATH)/frameworks/native/data/etc/android.hardware.bluetooth_le.xml:system/etc/permissions/android.hardware.bluetooth_le.xml
-	$(LOCAL_PATH)/frameworks/native/data/etc/android.hardware.camera.flash-autofocus.xml:system/etc/android.hardware.camera.flash-autofocus.xml
-	$(LOCAL_PATH)/frameworks/native/data/etc/android.hardware.camera.front.xml:system/etc/permissions/android.hardware.camera.front.xml
-	$(LOCAL_PATH)/frameworks/native/data/etc/android.hardware.location.gps.xml:system/etc/permissions/android.hardware.location.gps.xml
-	$(LOCAL_PATH)/frameworks/native/data/etc/android.hardware.nfc.hce.xml:system/etc/permissions/android.hardware.nfc.hce.xml
-	$(LOCAL_PATH)/frameworks/native/data/etc/android.hardware.nfc.xml:system/etc/permissions/android.hardware.nfc.xml
-	$(LOCAL_PATH)/frameworks/native/data/etc/android.hardware.sensor.accelerometer.xml:system/etc/permissions/android.hardware.sensor.accelerometer.xml
-	$(LOCAL_PATH)/frameworks/native/data/etc/android.hardware.sensor.light.xml:system/etc/permissions/android.hardware.sensor.light.xml
-	$(LOCAL_PATH)/frameworks/native/data/etc/android.hardware.sensor.proximity.xml:system/etc/permissions/android.hardware.sensor.proximity.xml
-	$(LOCAL_PATH)/frameworks/native/data/etc/android.hardware.telephony.cdma.xml:system/etc/permissions/android.hardware.telephony.cdma.xml
-	$(LOCAL_PATH)/frameworks/native/data/etc/android.hardware.telephony.gsm.xml:system/etc/permissions/android.hardware.telephony.gsm.xml
-	$(LOCAL_PATH)/frameworks/native/data/etc/android.hardware.touchscreen.multitouch.jazzhand.xml:system/etc/permissions/android.hardware.touchscreen.multitouch.jazzhand.xml
-	$(LOCAL_PATH)/frameworks/native/data/etc/android.hardware.usb.accessory.xm:system/etc/permissions/android.hardware.usb.accessory.xml
-	$(LOCAL_PATH)/frameworks/native/data/etc/android.hardware.usb.host.xml:system/etc/permissions/android.hardware.usb.host.xml
-	$(LOCAL_PATH)/frameworks/native/data/etc/android.hardware.wifi.direct.xm:system/etc/permissions/android.hardware.wifi.direct.xml
-	$(LOCAL_PATH)/frameworks/native/data/etc/android.hardware.wifi.xml:system/etc/permissions/android.hardware.wifi.xml
-	$(LOCAL_PATH)/frameworks/native/data/etc/android.software.live_wallpaper.xml:system/etc/permissions/android.software.live_wallpaper.xml
-	$(LOCAL_PATH)/frameworks/native/data/etc/android.software.sip.voip.xml:system/etc/permissions/android.software.sip.voip.xml
-	$(LOCAL_PATH)/frameworks/native/data/etc/android.software.webview.xml:system/etc/permissions/android.software.webview.xml
-	$(LOCAL_PATH)/frameworks/native/data/etc/btmultisim.xml:system/etc/permissions/btmultisim.xml
-	$(LOCAL_PATH)/frameworks/native/data/etc/cneapiclient.xml:system/etc/permissions/cneapiclient.xml
-	$(LOCAL_PATH)/frameworks/native/data/etc/com.android.location.provider.xml:system/etc/permissions/com.android.location.provider.xml
-	$(LOCAL_PATH)/frameworks/native/data/etc/com.android.media.remotedisplay.xml:system/etc/permissions/com.android.media.remotedisplay.xml
-	$(LOCAL_PATH)/frameworks/native/data/etc/com.android.mediadrm.signer.xml:system/etc/permissions/com.android.mediadrm.signer.xml
-	$(LOCAL_PATH)/frameworks/native/data/etc/com.android.nfc.helper.xml:system/etc/permissions/com.android.nfc.helper.xml
-	$(LOCAL_PATH)/frameworks/native/data/etc/com.android.nfc_extras.xml:system/etc/permissions/com.android.nfc_extras.xml
-	$(LOCAL_PATH)/frameworks/native/data/etc/com.android.qcom.nfc_extras.xml:system/etc/permissions/com.android.qcom.nfc_extras.xml
-	$(LOCAL_PATH)/frameworks/native/data/etc/com.google.android.maps.xml:system/etc/permissions/com.google.android.maps.xml
-	$(LOCAL_PATH)/frameworks/native/data/etc/com.google.android.media.effects.xml:system/etc/permissions/com.google.android.media.effects.xml
-	$(LOCAL_PATH)/frameworks/native/data/etc/com.google.widevine.software.drm.xml:system/etc/permissions/com.google.widevine.software.drm.xml
-	$(LOCAL_PATH)/frameworks/native/data/etc/com.gsma.services.nfc.xml:system/etc/permissions/com.gsma.services.nfc.xml
-	$(LOCAL_PATH)/frameworks/native/data/etc/com.nxp.mifare.xml:system/etc/permissions/com.nxp.mifare.xml
-	$(LOCAL_PATH)/frameworks/native/data/etc/com.qti.snapdragon.sdk.display.xml:system/etc/permissions/com.qti.snapdragon.sdk.display.xml
-	$(LOCAL_PATH)/frameworks/native/data/etc/com.qti.videocall.permissions.xml:system/etc/permissions/com.qti.videocall.permissions.xml
-	$(LOCAL_PATH)/frameworks/native/data/etc/com.qualcomm.location.vzw_library.xml:system/etc/permissions/com.qualcomm.location.vzw_library.xml
-	$(LOCAL_PATH)/frameworks/native/data/etc/com.qualcomm.location.xml:system/etc/permissions/com.qualcomm.location.xml
-	$(LOCAL_PATH)/frameworks/native/data/etc/com.quicinc.cne.xml:system/etc/permissions/com.quicinc.cne.xml
-	$(LOCAL_PATH)/frameworks/native/data/etc/com.quicinc.wbc.xml:system/etc/permissions/com.quicinc.wbc.xml
-	$(LOCAL_PATH)/frameworks/native/data/etc/com.vzw.nfc.xml:system/etc/permissions/com.vzw.nfc.xml
-	$(LOCAL_PATH)/frameworks/native/data/etc/device_api.xml:system/etc/permissions/device_api.xml
-	$(LOCAL_PATH)/frameworks/native/data/etc/dpmapi.xml:system/etc/permissions/dpmapi.xml
-	$(LOCAL_PATH)/frameworks/native/data/etc/dsi_config.xml:system/etc/permissions/dsi_config.xml
-	$(LOCAL_PATH)/frameworks/native/data/etc/handheld_core_hardware.xml:system/etc/permissions/handheld_core_hardware.xml
-	$(LOCAL_PATH)/frameworks/native/data/etc/imscm.xml:system/etc/permissions/imscm.xml
-	$(LOCAL_PATH)/frameworks/native/data/etc/interface_permissions.xml:system/etc/permissions/interface_permissions.xml
-	$(LOCAL_PATH)/frameworks/native/data/etc/netmgr_config.xml:system/etc/permissions/netmgr_config.xml
-	$(LOCAL_PATH)/frameworks/native/data/etc/org.simalliance.openmobileapi.xml:system/etc/permissions/org.simalliance.openmobileapi.xml
-	$(LOCAL_PATH)/frameworks/native/data/etc/platform.xml:system/etc/permissions/platform.xml
-	$(LOCAL_PATH)/frameworks/native/data/etc/qcnvitems.xml:system/etc/permissions/qcnvitems.xml
-	$(LOCAL_PATH)/frameworks/native/data/etc/qcrilhook.xml:system/etc/permissions/qcrilhook.xml
-	$(LOCAL_PATH)/frameworks/native/data/etc/qmi_config.xml:system/etc/permissions/qmi_config.xml
-	$(LOCAL_PATH)/frameworks/native/data/etc/qti_permissions.xml:system/etc/permissions/qti_permissions.xml
-	$(LOCAL_PATH)/frameworks/native/data/etc/rcs_plugin_aidl.xml:system/etc/permissions/rcs_plugin_aidl.xml
-	$(LOCAL_PATH)/frameworks/native/data/etc/rcs_service_aidl.xml:system/etc/permissions/rcs_service_aidl.xml
-	$(LOCAL_PATH)/frameworks/native/data/etc/rcs_service_api.xml:system/etc/permissions/rcs_service_api.xml
-	$(LOCAL_PATH)/frameworks/native/data/etc/telephonyservice.xml:system/etc/permissions/telephonyservice.xml
-	$(LOCAL_PATH)/frameworks/native/data/etc/videocallapi.xml:system/etc/permissions/videocallapi.xml
+  	$(LOCAL_PATH)/frameworks/native/data/etc/android.hardware.bluetooth.xml:system/etc/permissions/android.hardware.bluetooth.xml \
+	$(LOCAL_PATH)/frameworks/native/data/etc/android.hardware.bluetooth_le.xml:system/etc/permissions/android.hardware.bluetooth_le.xml \
+	$(LOCAL_PATH)/frameworks/native/data/etc/android.hardware.camera.flash-autofocus.xml:system/etc/android.hardware.camera.flash-autofocus.xml \
+	$(LOCAL_PATH)/frameworks/native/data/etc/android.hardware.camera.front.xml:system/etc/permissions/android.hardware.camera.front.xml \
+	$(LOCAL_PATH)/frameworks/native/data/etc/android.hardware.location.gps.xml:system/etc/permissions/android.hardware.location.gps.xml \
+	$(LOCAL_PATH)/frameworks/native/data/etc/android.hardware.nfc.hce.xml:system/etc/permissions/android.hardware.nfc.hce.xml \
+	$(LOCAL_PATH)/frameworks/native/data/etc/android.hardware.nfc.xml:system/etc/permissions/android.hardware.nfc.xml \
+	$(LOCAL_PATH)/frameworks/native/data/etc/android.hardware.sensor.accelerometer.xml:system/etc/permissions/android.hardware.sensor.accelerometer.xml \
+	$(LOCAL_PATH)/frameworks/native/data/etc/android.hardware.sensor.light.xml:system/etc/permissions/android.hardware.sensor.light.xml \
+	$(LOCAL_PATH)/frameworks/native/data/etc/android.hardware.sensor.proximity.xml:system/etc/permissions/android.hardware.sensor.proximity.xml \
+	$(LOCAL_PATH)/frameworks/native/data/etc/android.hardware.telephony.cdma.xml:system/etc/permissions/android.hardware.telephony.cdma.xml \
+	$(LOCAL_PATH)/frameworks/native/data/etc/android.hardware.telephony.gsm.xml:system/etc/permissions/android.hardware.telephony.gsm.xml \
+	$(LOCAL_PATH)/frameworks/native/data/etc/android.hardware.touchscreen.multitouch.jazzhand.xml:system/etc/permissions/android.hardware.touchscreen.multitouch.jazzhand.xml \
+	$(LOCAL_PATH)/frameworks/native/data/etc/android.hardware.usb.accessory.xm:system/etc/permissions/android.hardware.usb.accessory.xml \
+	$(LOCAL_PATH)/frameworks/native/data/etc/android.hardware.usb.host.xml:system/etc/permissions/android.hardware.usb.host.xml \
+	$(LOCAL_PATH)/frameworks/native/data/etc/android.hardware.wifi.direct.xm:system/etc/permissions/android.hardware.wifi.direct.xml \
+	$(LOCAL_PATH)/frameworks/native/data/etc/android.hardware.wifi.xml:system/etc/permissions/android.hardware.wifi.xml \
+	$(LOCAL_PATH)/frameworks/native/data/etc/android.software.live_wallpaper.xml:system/etc/permissions/android.software.live_wallpaper.xml \
+	$(LOCAL_PATH)/frameworks/native/data/etc/android.software.sip.voip.xml:system/etc/permissions/android.software.sip.voip.xml \
+	$(LOCAL_PATH)/frameworks/native/data/etc/android.software.webview.xml:system/etc/permissions/android.software.webview.xml \
+	$(LOCAL_PATH)/frameworks/native/data/etc/btmultisim.xml:system/etc/permissions/btmultisim.xml \
+	$(LOCAL_PATH)/frameworks/native/data/etc/cneapiclient.xml:system/etc/permissions/cneapiclient.xml \
+	$(LOCAL_PATH)/frameworks/native/data/etc/com.android.location.provider.xml:system/etc/permissions/com.android.location.provider.xml \
+	$(LOCAL_PATH)/frameworks/native/data/etc/com.android.media.remotedisplay.xml:system/etc/permissions/com.android.media.remotedisplay.xml \
+	$(LOCAL_PATH)/frameworks/native/data/etc/com.android.mediadrm.signer.xml:system/etc/permissions/com.android.mediadrm.signer.xml \
+	$(LOCAL_PATH)/frameworks/native/data/etc/com.android.nfc.helper.xml:system/etc/permissions/com.android.nfc.helper.xml \
+	$(LOCAL_PATH)/frameworks/native/data/etc/com.android.nfc_extras.xml:system/etc/permissions/com.android.nfc_extras.xml \
+	$(LOCAL_PATH)/frameworks/native/data/etc/com.android.qcom.nfc_extras.xml:system/etc/permissions/com.android.qcom.nfc_extras.xml \
+	$(LOCAL_PATH)/frameworks/native/data/etc/com.google.android.maps.xml:system/etc/permissions/com.google.android.maps.xml \
+	$(LOCAL_PATH)/frameworks/native/data/etc/com.google.android.media.effects.xml:system/etc/permissions/com.google.android.media.effects.xml \
+	$(LOCAL_PATH)/frameworks/native/data/etc/com.google.widevine.software.drm.xml:system/etc/permissions/com.google.widevine.software.drm.xml \
+	$(LOCAL_PATH)/frameworks/native/data/etc/com.gsma.services.nfc.xml:system/etc/permissions/com.gsma.services.nfc.xml \
+	$(LOCAL_PATH)/frameworks/native/data/etc/com.nxp.mifare.xml:system/etc/permissions/com.nxp.mifare.xml \
+	$(LOCAL_PATH)/frameworks/native/data/etc/com.qti.snapdragon.sdk.display.xml:system/etc/permissions/com.qti.snapdragon.sdk.display.xml \
+	$(LOCAL_PATH)/frameworks/native/data/etc/com.qti.videocall.permissions.xml:system/etc/permissions/com.qti.videocall.permissions.xml \
+	$(LOCAL_PATH)/frameworks/native/data/etc/com.qualcomm.location.vzw_library.xml:system/etc/permissions/com.qualcomm.location.vzw_library.xml \
+	$(LOCAL_PATH)/frameworks/native/data/etc/com.qualcomm.location.xml:system/etc/permissions/com.qualcomm.location.xml \
+	$(LOCAL_PATH)/frameworks/native/data/etc/com.quicinc.cne.xml:system/etc/permissions/com.quicinc.cne.xml \
+	$(LOCAL_PATH)/frameworks/native/data/etc/com.quicinc.wbc.xml:system/etc/permissions/com.quicinc.wbc.xml \
+	$(LOCAL_PATH)/frameworks/native/data/etc/com.vzw.nfc.xml:system/etc/permissions/com.vzw.nfc.xml \
+	$(LOCAL_PATH)/frameworks/native/data/etc/device_api.xml:system/etc/permissions/device_api.xml \
+	$(LOCAL_PATH)/frameworks/native/data/etc/dpmapi.xml:system/etc/permissions/dpmapi.xml \
+	$(LOCAL_PATH)/frameworks/native/data/etc/dsi_config.xml:system/etc/permissions/dsi_config.xml \
+	$(LOCAL_PATH)/frameworks/native/data/etc/handheld_core_hardware.xml:system/etc/permissions/handheld_core_hardware.xml \
+	$(LOCAL_PATH)/frameworks/native/data/etc/imscm.xml:system/etc/permissions/imscm.xml \
+	$(LOCAL_PATH)/frameworks/native/data/etc/interface_permissions.xml:system/etc/permissions/interface_permissions.xml \
+	$(LOCAL_PATH)/frameworks/native/data/etc/netmgr_config.xml:system/etc/permissions/netmgr_config.xml \
+	$(LOCAL_PATH)/frameworks/native/data/etc/org.simalliance.openmobileapi.xml:system/etc/permissions/org.simalliance.openmobileapi.xml \
+	$(LOCAL_PATH)/frameworks/native/data/etc/platform.xml:system/etc/permissions/platform.xml \
+	$(LOCAL_PATH)/frameworks/native/data/etc/qcnvitems.xml:system/etc/permissions/qcnvitems.xml \
+	$(LOCAL_PATH)/frameworks/native/data/etc/qcrilhook.xml:system/etc/permissions/qcrilhook.xml \
+	$(LOCAL_PATH)/frameworks/native/data/etc/qmi_config.xml:system/etc/permissions/qmi_config.xml \
+	$(LOCAL_PATH)/frameworks/native/data/etc/qti_permissions.xml:system/etc/permissions/qti_permissions.xml \
+	$(LOCAL_PATH)/frameworks/native/data/etc/rcs_plugin_aidl.xml:system/etc/permissions/rcs_plugin_aidl.xml \
+	$(LOCAL_PATH)/frameworks/native/data/etc/rcs_service_aidl.xml:system/etc/permissions/rcs_service_aidl.xml \
+	$(LOCAL_PATH)/frameworks/native/data/etc/rcs_service_api.xml:system/etc/permissions/rcs_service_api.xml \
+	$(LOCAL_PATH)/frameworks/native/data/etc/telephonyservice.xml:system/etc/permissions/telephonyservice.xml \
+	$(LOCAL_PATH)/frameworks/native/data/etc/videocallapi.xml:system/etc/permissions/videocallapi.xml \
 
 # MSM IRQ Balancer configuration file
 PRODUCT_COPY_FILES += \
@@ -170,8 +170,6 @@ PRODUCT_COPY_FILES += \
     $(LOCAL_PATH)/WCNSS_qcom_cfg.ini:system/etc/wifi/WCNSS_qcom_cfg.ini \
     $(LOCAL_PATH)/WCNSS_wlan_dictionary.dat:system/etc/wifi/WCNSS_wlan_dictionary.dat \
     $(LOCAL_PATH)/WCNSS_qcom_wlan_nv.bin:system/etc/wifi/WCNSS_qcom_wlan_nv.bin
-
-$(call inherit-product, frameworks/native/build/phone-hdpi-1024-dalvik-heap.mk)
 
 # ANT+ stack
 PRODUCT_PACKAGES += \
@@ -341,21 +339,8 @@ PRODUCT_PROPERTY_OVERRIDES += \
     dalvik.vm.heapstartsize=14m
 
 PRODUCT_DEFAULT_PROPERTY_OVERRIDES += \
-   camera2.portability.force_api=1
+    camera2.portability.force_api=1
 
 # IO Scheduler
 PRODUCT_PROPERTY_OVERRIDES += \
     sys.io.scheduler=bfq
-
-include $(LOCAL_PATH)audio/audio_headers.mk
-
-ifeq ($(TARGET_PREBUILT_KERNEL),)
-LOCAL_KERNEL := kernel/coolpad/cp3622a
-else
-LOCAL_KERNEL := $(TARGET_PREBUILT_KERNEL)
-endif
-
-PRODUCT_COPY_FILES := \
-	$(LOCAL_KERNEL):kernel
-
-$(call inherit-product-if-exists, vendor/coolpad/cp3622a/device-vendor.mk)

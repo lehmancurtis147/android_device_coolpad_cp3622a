@@ -1,7 +1,5 @@
 LOCAL_PATH := $(call my-dir)device/coolpad/cp3622a
 
-TARGET_SPECIFIC_HEADER_PATH := $(LOCAL_PATH)/include
-
 KBUILD_OUTPUT += \
     $(mkdir "/home/curtis/android/5.1/out/target/product/cp3622a/obj/KERNEL_OBJ/usr")
 
@@ -21,8 +19,6 @@ TARGET_CPU_ABI := armeabi-v7a
 TARGET_CPU_ABI2 := armeabi
 TARGET_CPU_VARIANT := cortex-a7
 TARGET_CPU_CORTEX_A7 := true
-TARGET_GLOBAL_CFLAGS += -mtune=cortex-a7 -mfpu=neon-vfpv4 -mfloat-abi=softfp
-TARGET_GLOBAL_CPPFLAGS += -mtune=cortex-a7 -mfpu=neon-vfpv4 -mfloat-abi=softfp
 TARGET_USE_QCOM_BIONIC_OPTIMIZATION := true
 BOARD_EGL_CFG := $(LOCAL_PATH)/egl.cfg
 
@@ -124,9 +120,6 @@ TARGET_CUSTOM_DTBTOOL := $(LOCAL_PATH)/dtbtool/Android.mk
 # Lights
 TARGET_PROVIDES_LIBLIGHT := true
 
-# Memory
-MALLOC_IMPL := dlmalloc
-
 # Partition sizes
 TARGET_USERIMAGES_USE_EXT4 := true
 TARGET_USERIMAGES_USE_F2FS := true
@@ -153,9 +146,6 @@ TARGET_SYSTEM_PROP += $(LOCAL_PATH)/system.prop
 TARGET_RECOVERY_FSTAB := $(LOCAL_PATH)/twrp/twrp.fstab
 TARGET_USERIMAGES_USE_EXT4 := true
 
-# SELinux
-include device/qcom/sepolicy/sepolicy.mk
-
 BOARD_SEPOLICY_DIRS += \
     device/coolpad/cp3622a/sepolicy
 
@@ -178,6 +168,7 @@ TARGET_USE_CUSTOM_LUN_FILE_PATH := /sys/devices/platform/msm_hsusb/gadget/lun1/f
 PROTOBUF_SUPPORTED := true
 
 # TWRP
+RECOVERY_VARIANT := twrp
 DEVICE_RESOLUTION := 854x480
 TW_THEME := portrait_hdpi
 TARGET_RECOVERY_QCOM_RTC_FIX := true
@@ -223,6 +214,3 @@ TARGET_KERNEL_MODULES += CORE_CTL_MODULE
 
 # include vendor
 include vendor/coolpad/cp3622a/BoardConfigVendor.mk
-
-# Use build_number tag for ota file
-BUILD_NUMBER := $(PRODUCT_VERSION_MAJOR).$(PRODUCT_VERSION_MINOR)-$(shell date -u +%Y%m%d)-$(OMNI_BUILDTYPE)

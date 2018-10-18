@@ -20,27 +20,27 @@ LOCAL_PATH := $(call my-dir)
 include $(CLEAR_VARS)
 
 # Get the prebuilt list of APNs
-$(call inherit-product, vendor/omni/config/gsm.mk)
+$(call inherit-product, vendor/aosp/config/gsm.mk)
 
 # Inherit from the common Open Source product configuration
 $(call inherit-product, $(SRC_TARGET_DIR)/product/aosp_base_telephony.mk)
 
-# must be before including omni part
+# must be before including aosp part
 TARGET_BOOTANIMATION_SIZE := 854x480
 
 # Inherit from our custom product configuration
-$(call inherit-product, vendor/omni/config/common.mk)
+$(call inherit-product, vendor/aosp/config/common.mk)
 
 PRODUCT_PACKAGES += \
 	charger_res_images \
 	charger
 
 # Device identifier. This must come after all inclusions
-PRODUCT_NAME := omni_cp3622a
+PRODUCT_NAME := aosp_cp3622a
 PRODUCT_DEVICE := cp3622a
 PRODUCT_BRAND := coolpad
 PRODUCT_MODEL := cp3622a
 PRODUCT_MANUFACTURER := coolpad
 
-$(call inherit-product, device/coolpad/cp3622a/device.mk)
+$(call inherit-product, device/coolpad/cp3622a/cp3622a.mk)
 $(call inherit-product-if-exists, vendor/coolpad/cp3622a/device-vendor.mk)
