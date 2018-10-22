@@ -13,11 +13,14 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 #
-$(call inherit-product, $(SRC_TARGET_DIR)/product/full_base.mk)
-$(call inherit-product, device/coolpad/cp3622a/device.mk)
 
-PRODUCT_NAME := full_cp3622a
-PRODUCT_DEVICE := cp3622a
-PRODUCT_BRAND := Coolpad
-PRODUCT_MODEL := cp3622a
-PRODUCT_MANUFACTURER := coolpad
+ifeq ($(TARGET_PREBUILT_KERNEL),)
+LOCAL_KERNEL := device/coolpad/cp3622a-kernel/kernel
+else
+LOCAL_KERNEL := $(TARGET_PREBUILT_KERNEL)
+endif
+
+PRODUCT_COPY_FILES := \
+	$(LOCAL_KERNEL):kernel
+
+$(call inherit-product-if-exists, vendor/coolpad/cp3622a/device-vendor.mk)
