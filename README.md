@@ -1,8 +1,7 @@
-
-Device configuration for Coolpad Catalyst 3622A (a.k.a. cp3622a)
+Device configuration for Coolpad Catalyst 3622A _*(cp3622a)*_
 ===================================================================
 
-Basic   | Spec Sheet
+_Basic_ | _Spec Sheet_
 -------:|:-------------------------
 CPU     | Quad-core 1.2 GHz ARM® Cortex™ A7
 CHIPSET | Qualcomm MSM8909 Snapdragon 210
@@ -26,7 +25,7 @@ Build | 0700208
 Specifications
 =============================================================
 
-Applications   | Data
+_Applications_ | _Data_
 --------------:|:-------------------------------------
 Camera megapixels | 5
 Camera flash | L.E.D.
@@ -60,7 +59,7 @@ Voice commands | google assistant
 Connectivity
 ===============================================================
 
-Application | Data
+_Application_ | _Data_
 -----------:|:-----------------------------------------
 Bluetooth type | 4.0
 USB type | microUSB v2.0
@@ -76,7 +75,7 @@ WLAN/WI-FI type | 802.11 b/g/n
 General
 ==============================================================
 
-Application | Data
+_Application_ | _Data_
 -----------:|:-----------------------------------------
 3.5mm jack | headphone/hands-free
 Battery capacity (mAh) | 2200
@@ -102,7 +101,7 @@ Memory card slot | up-to 32 GB externalSD
 Networks
 ============================================================
 
-Modules | Data
+_Modules_ | _Data_
 -----------:|:-----------------------------------------
 GSM bands (2G networks) | 850 / 900 / 1800 / 1900
 4G (LTE) |
@@ -115,11 +114,11 @@ EDGE |
 Software
 ==========================================================
 
-Product    | Type
+_Product_ | _Type_
 -----------:|:-----------------------------------------
 OS | Android
 OS version | Android 5.1 (Lollipop)
 Java | openjdk-7-jdk (Lollipop)
 Flash | L.E.D. Qualcomm (photo-flash + tourch)
 
-# android_device_coolpad_cp3622a
+[ android_device_coolpad_cp3622a ]
