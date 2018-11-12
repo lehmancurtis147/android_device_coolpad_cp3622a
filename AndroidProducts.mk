@@ -14,11 +14,5 @@
 # limitations under the License.
 #
 
-LOCAL_PATH := $(call my-dir)
-
-include $(CLEAR_VARS)
-
 PRODUCT_MAKEFILES := \
-	$(LOCAL_DIR)/cp3622a.mk \
-	$(LOCAL_DIR)/aosp_cp3622a.mk \
-	$(LOCAL_DIR)/aosp.mk
+	$(LOCAL_DIR)/omni_cp3622a.mk
