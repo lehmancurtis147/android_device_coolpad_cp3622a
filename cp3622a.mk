@@ -13,12 +13,9 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 #
-LOCAL_PATH := $(call my-dir)
-
-DEVICE_PACKAGE_OVERLAYS := $(LOCAL_PATH)/overlay
 
 # Screen density
-PRODUCT_AAPT_CONFIG := normal
+PRODUCT_AAPT_CONFIG := normal hdpi xhdpi
 PRODUCT_AAPT_PREF_CONFIG := hdpi
 
 # media_profiles and media_codecs xmls for 8909
@@ -81,7 +78,7 @@ PRODUCT_COPY_FILES += \
 
 #Twrp fstab
 PRODUCT_COPY_FILES += \
-	$(LOCAL_PATH)/twrp/twrp.fstab:recovery/root/etc/twrp.fstab
+	$(LOCAL_PATH)/prebuilt/twrp.fstab:recovery/root/etc/twrp.fstab
 
 # coolpad sim files
 PRODUCT_COPY_FILES += \
