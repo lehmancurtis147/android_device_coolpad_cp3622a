@@ -17,10 +17,10 @@
 
 set -e
 
-export INITIAL_COPYRIGHT_YEAR=2015
+export INITIAL_COPYRIGHT_YEAR=2016
 
 # Required!
-export DEVICE=scale
+export DEVICE=cp3622a
 export DEVICE_COMMON=msm8909-common
 export VENDOR=Coolpad
 
@@ -41,7 +41,7 @@ fi
 setup_vendor "$DEVICE_COMMON" "$VENDOR" "$CM_ROOT" "true"
 
 # Copyright headers and guards
-write_headers "scale"
+write_headers "cp3622a"6
 
 # The standard common blobs
 write_makefiles "$MY_DIR"/proprietary-files.txt
