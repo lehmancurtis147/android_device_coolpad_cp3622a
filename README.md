@@ -22,6 +22,8 @@ Board | cp3622a
 Platform | msm8909
 Build | 0700208
 
+https://drive.google.com/file/d/1fo2FYd-qm89fWRmW964D4xiUguoNkC1d/view?usp=drivesdk
+
 Specifications
 =============================================================
 
