@@ -1,0 +1,35 @@
+# Android fstab file.
+
+/sbl1         emmc    /dev/block/mmcblk0p1
+/sbl1bak      emmc    /dev/block/mmcblk0p2
+/aboot        emmc    /dev/block/mmcblk0p3
+/abootbak     emmc    /dev/block/mmcblk0p4
+/rpm          emmc    /dev/block/mmcblk0p5
+/rpmbak       emmc    /dev/block/mmcblk0p6
+/tz           emmc    /dev/block/mmcblk0p7
+/tzbak        emmc    /dev/block/mmcblk0p8
+/pad          emmc    /dev/block/mmcblk0p9
+/modemst1     emmc    /dev/block/mmcblk0p10
+/modemst2     emmc    /dev/block/mmcblk0p11
+/misc         emmc    /dev/block/mmcblk0p12
+/params       emmc    /dev/block/mmcblk0p13
+/panic	      ext4    /dev/block/mmcblk0p14
+/fsc	      emmc    /dev/block/mmcblk0p15
+/ssd          emmc    /dev/block/mmcblk0p16
+/keystore     emmc    /dev/block/mmcblk0p17
+/config       emmc    /dev/block/mmcblk0p18
+/oem          emmc    /dev/block/mmcblk0p19
+/modem        emmc    /dev/block/mmcblk0p20
+/devinfo      emmc    /dev/block/mmcblk0p21
+/ddr          emmc    /dev/block/mmcblk0p22
+/fsg          emmc    /dev/block/mmcblk0p23
+/boot         emmc    /dev/block/mmcblk0p24             		flags=backup=1
+/sec          emmc    /dev/block/mmcblk0p25
+/system       ext4    /dev/block/mmcblk0p26				flags=backup=1
+/persist      ext4    /dev/block/mmcblk0p27
+/cache        ext4    /dev/block/mmcblk0p28				flags=backup=1
+/recovery     emmc    /dev/block/mmcblk0p29				flags=backup=1
+/userdata     ext4    /dev/block/mmcblk0p30				flags=backup=1		length=-16384
+/none	      swap    /dev/block/zram0					flags=zramsize=536870912
+/sdcard1      vfat    /devices/soc.0/7864900.sdhci/mmc_host             flags=display="micro-sdcard";storage;wipeingui;removable
+/sdcard1      vfat    /dev/block/platform/7864900.sdhci/mmcblk1p1     
