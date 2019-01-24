@@ -1,0 +1,64 @@
+# Copyright (c) 2013, The Linux Foundation. All rights reserved.
+#
+# Redistribution and use in source and binary forms, with or without
+# modification, are permitted provided that the following conditions are
+# met:
+#     * Redistributions of source code must retain the above copyright
+#       notice, this list of conditions and the following disclaimer.
+#     * Redistributions in binary form must reproduce the above
+#       copyright notice, this list of conditions and the following
+#       disclaimer in the documentation and/or other materials provided
+#       with the distribution.
+#     * Neither the name of The Linux Foundation nor the names of its
+#       contributors may be used to endorse or promote products derived
+#       from this software without specific prior written permission.
+#
+# THIS SOFTWARE IS PROVIDED "AS IS" AND ANY EXPRESS OR IMPLIED
+# WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED WARRANTIES OF
+# MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NON-INFRINGEMENT
+# ARE DISCLAIMED.  IN NO EVENT SHALL THE COPYRIGHT OWNER OR CONTRIBUTORS
+# BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR
+# CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF
+# SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR PROFITS; OR
+# BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY,
+# WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE
+# OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN
+# IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
+
+# Android fstab file.
+
+# device                                   mount point      fstype        [device2] [length=]
+
+/dev/block/bootdevice/by-name/system       /system         ext4      flags=backup=1,ro,barrier=1
+/dev/block/bootdevice/by-name/cache        /cache          ext4      flags=backup=1,noatime,nosuid,nodev,barrier=1,data=ordered
+/dev/block/bootdevice/by-name/userdata     /data           ext4    flags=noatime,nosuid,nodev,barrier=1,data=ordered,noauto_da_alloc,length=-16384
+/dev/block/mmcblk1p1                       /sdcard         vfat    flags=nosuid,nodev,barrier=1,data=ordered,nodelalloc
+/dev/block/bootdevice/by-name/boot         /boot           emmc
+/dev/block/bootdevice/by-name/recovery     /recovery       emmc
+/dev/block/bootdevice/by-name/misc         /misc           emmc
+/dev/block/mmcblk0p1	/sbl1         emmc
+/dev/block/mmcblk0p2	/sbl1bak      emmc
+/dev/block/mmcblk0p3	/aboot        emmc
+/dev/block/mmcblk0p4    /abootbak     emmc
+/dev/block/mmcblk0p5    /rpm          emmc
+/dev/block/mmcblk0p6    /rpmbak       emmc
+/dev/block/mmcblk0p7    /tz           emmc
+/dev/block/mmcblk0p8    /tzbak        emmc
+/dev/block/mmcblk0p9    /pad          emmc
+/dev/block/mmcblk0p10   /modemst1     emmc
+/dev/block/mmcblk0p11   /modemst2     emmc
+/dev/block/mmcblk0p13   /params       emmc
+/dev/block/mmcblk0p14   /panic	      ext4
+/dev/block/mmcblk0p15   /fsc	      emmc
+/dev/block/mmcblk0p16   /ssd          emmc
+/dev/block/mmcblk0p17   /keystore     emmc
+/dev/block/mmcblk0p18   /config       emmc
+/dev/block/mmcblk0p19   /oem          emmc
+/dev/block/mmcblk0p20   /modem        emmc
+/dev/block/mmcblk0p21   /devinfo      emmc
+/dev/block/mmcblk0p22   /ddr          emmc
+/dev/block/mmcblk0p23   /fsg          emmc
+/dev/block/mmcblk0p25   /sec          emmc
+/dev/block/mmcblk0p27   /persist      ext4
+/dev/block/zram0	/none	      swap    flags=zramsize=536870912
+/devices/soc.0/7864900.sdhci/mmc_host      /sdcard1      vfat       flags=display="micro-sdcard";storage;wipeingui;removable

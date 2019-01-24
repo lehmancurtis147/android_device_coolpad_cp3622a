@@ -1,0 +1,22 @@
+on fs
+    wait /dev/block/bootdevice/by-name/system
+    mount ext4 /dev/block/bootdevice/by-name/system /system ro noatime barrier=1
+    wait /dev/block/bootdevice/by-name/userdata
+    mount ext4 /dev/block/bootdevice/by-name/userdata /data nosuid nodev noatime barrier=1 noauto_da_alloc errors=continue
+
+on boot
+    export LD_CONFIG_FILE /sbin/ld.config.txt
+
+# For starting recovery on 5.0 and newer
+service recovery /sbin/recovery
+    seclabel u:r:recovery:s0
+
+# This helps fix ld.config.txt errors from the linker on Android 8.1
+service ldconfigtxt /sbin/touch /sbin/ld.config.txt
+    oneshot
+    seclabel u:r:recovery:s0
+
+service keystore /system/bin/keystore /data/misc/keystore
+    class main
+    user keystore
+    group keystore drmrpc system
